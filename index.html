@@ -299,7 +299,7 @@ setButtonImage("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4TaxRXhpZgAAT
 			<div class="aytitle" @touchstart="titleTouchStart" @touchmove="titleTouchMove">
 				<i :class="ifshow?'el-icon-caret-bottom':'el-icon-caret-top'" @click="ifshow = !ifshow"></i>
 				<span class="title-age" style="margin-left:5px;">Crisis Action iOS By Y1n2</span>
-				<i class="titleClose el-icon el-icon-close" @click="closeimgui"></i>
+				
 			</div>
 			<div class="aybody">
 				<div class="aytab">
@@ -1678,15 +1678,7 @@ var app = new Vue({
                 },
 				mounted() {
     this.setRect(360, 320);
-    setButtonAction(function () {
-     var menu = document.querySelector("#app");
-     if (menu.style.display == 'none') {
-      menu.style.display = 'block';
-     } else {
-      menu.style.display = 'none';
-     }
-    });
-   },
+    
 				methods: {
 					setRect(w, h, x = -1, y = -1) {
 						var boxW = w;

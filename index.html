@@ -1696,11 +1696,11 @@ var app = new Vue({
      if (menu.style.display == 'none') {
       menu.style.display = 'block';
       //显示菜单之后, 设置触控不可穿透悬浮窗口
-      //setWindowTouch(true);
+      setWindowTouch(true);
      } else {
       menu.style.display = 'none';
       //隐藏菜单之后, 设置触控穿透悬浮窗口
-      //setWindowTouch(false);
+      setWindowTouch(false);
      }
     });
    },

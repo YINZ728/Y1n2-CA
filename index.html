@@ -1677,8 +1677,16 @@ var app = new Vue({
 					}
                 },
 				mounted() {
-					this.setRect(360, 320);
-				},
+    this.setRect(360, 320);
+    setButtonAction(function () {
+     var menu = document.querySelector("#app");
+     if (menu.style.display == 'none') {
+      menu.style.display = 'block';
+     } else {
+      menu.style.display = 'none';
+     }
+    });
+   },
 				methods: {
 					setRect(w, h, x = -1, y = -1) {
 						var boxW = w;

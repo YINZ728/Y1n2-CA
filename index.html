@@ -413,6 +413,9 @@
                    <el-button onclick="awp()">部分狙擊</el-button>
                    <el-button onclick="xian1()">懲戒</el-button>
                    <el-button onclick="xian2()">怒龍</el-button>
+		   <br>
+                   <br>
+		   <el-button onclick="dao()">匕首(僅人機有效)</el-button>
                       </div>
 					</el-collapse-transition>
                    			
@@ -465,11 +468,12 @@
 				</div>
 				    <el-collapse-transition>
 						<div v-show="showOption4">
-          <p>2025/3/29:優化介面UI</p>
-          <p>2025/3/14:優化槍械介面</p>
+                  <p>2025/3/31:新增速通人機</p>
+		  <p>2025/3/29:優化介面UI</p>
+                  <p>2025/3/14:優化槍械介面</p>
 		  <p>2025/3/13:強鎖120hz(直裝限定)</p>
 		  <p>2025/3/11:新增全部槍械射速增快</p>
-          <p>2025/3/9:新增戰龍、白金烈焰改傳說無後&射速</p>
+                  <p>2025/3/9:新增戰龍、白金烈焰改傳說無後&射速</p>
 		  <p>2025/1/31:新增黑騎、魔龍改傳說無後&射速</p>
 		  <p>2024/11/26:新增風騎改傳說無後&射速</p>
 		  <p>2024/3/24:新增白金戰龍無後&射速</p>
@@ -1083,6 +1087,18 @@ h5gg.searchNumber('10', 'F32', '0x00000000', '0x200000000');
 h5gg.searchNearby('0.7', 'F32','0x400');
 h5gg.searchNumber('10', 'F32', '0x00000000', '0x200000000');
 h5gg.editAll('-9999', 'F32');
+}
+
+function dao(){//匕首
+h5gg.clearResults();
+h5gg.searchNumber('850001', 'I32', '0x00000000', '0x200000000');
+h5gg.searchNearby('2', 'F32','0x100');
+h5gg.searchNumber('2', 'F32', '0x00000000', '0x200000000');
+h5gg.editAll('1000', 'F32');
+h5gg.searchNearby('0.5', 'F32','0x100');
+h5gg.searchNumber('0.5', 'F32', '0x00000000', '0x200000000');
+h5gg.editAll('0.0001', 'F32');
+alert("匕首範圍快刀")
 }
   
 function gou(){//狗槍9以上無後射速

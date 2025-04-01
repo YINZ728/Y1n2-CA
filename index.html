@@ -311,17 +311,16 @@
                     <el-button onclick="allss()">射速</el-button>
                     <br>
                     <br>
+                    <el-button onclick="st()">鎖頭</el-button>
                     <el-button onclick="fk()">浮空</el-button>
                     <el-button onclick="cq()">穿牆</el-button>
                     <el-button onclick="js()">加速</el-button>
                     <el-button onclick="gt()">高跳</el-button>
-                    
                     <br>
                     <br>
                     <p>開關功能<el-button onclick="yjgb()">重置部分</el-button>(遊戲結束未關閉功能時使用)</p>
                     <br>
                     <el-button onclick="yc()">懸浮</el-button>
-                    <el-button onclick="st()">鎖頭</el-button>
                     <el-button onclick="gq()">隔牆</el-button>
                     <el-button onclick="black()">黑地圖</el-button>
                     <br>
@@ -334,21 +333,61 @@
 			    	</div>
 				<div v-show="tabValue==='two'">
 				   <div class="aytext">
-				   <p>男角功能</p>
 				   </div>
-                   <el-button onclick="nft()">飛天開關</el-button>
-                   <el-button onclick="ndd()">遁地開關</el-button>
-                   <el-button onclick="nzd()">自訂</el-button>
-                   <el-button onclick="nkz()">克制瞬移</el-button>
+                   <p>飛天遁地</p>
                    <br>
+                   <div class="aycollapse" @click="showOption6 = !showOption6" style="cursor:pointer">
+						<i :class="showOption6?'el-icon-caret-bottom':'el-icon-caret-right'"></i>
+						<span>男角</span>
+				</div>
+                   <el-collapse-transition>
+						<div v-show="showOption6">
                    <br>
-                   <p>女角功能</p>
+                   <p>男角 <el-button onclick="nftyss()">每局搜索一次</el-button>
+                   <el-button onclick="nftyy()">回復初始值</el-button>
+                   <input id="check1" type="checkbox" onclick="nfths()" style="margin-left: 10px;">開關
+                   </p>
                    <br>
-                   <el-button onclick="mft()">飛天開關</el-button>
-                   <el-button onclick="mdd()">遁地開關</el-button>
-                   <el-button onclick="mzd()">自訂</el-button>
-                   <el-button onclick="mkz()">克制瞬移</el-button>
+                   <input type="range" id="nftaaa" min="-39.15" max="40.85" step="0.001" value="0.85" style="width:75%" />
+                   <body>
+                   <p id="para1"></p>
+                   <div style="display: flex; justify-content: space-between; width: 75%; margin-top: 1px;">
+                   <label for="ntfaaa" style="text-align: left;">上</label>
+                   <label for="ntfaaa" style="text-align: right;">下</label>
+                   </div>
+                   </body>
+                   </div>
+				</el-collapse-transition>
                    <br>
+                   <div class="aycollapse" @click="showOption7 = !showOption7" style="cursor:pointer">
+						<i :class="showOption7?'el-icon-caret-bottom':'el-icon-caret-right'"></i>
+						<span>女角</span>
+				</div>
+                   <el-collapse-transition>
+						<div v-show="showOption7">
+                   <br>
+                   <p>女角 <el-button onclick="mftyss()">每局搜索一次</el-button>
+                   <el-button onclick="mftyy()">回復初始值</el-button>
+                   <input id="check2" type="checkbox" onclick="mfths()" style="margin-left: 10px;">開關
+                   </p>
+                   <br>
+                   <input type="range" id="mftaaa" min="-39.175" max="40.825" step="0.001" value="0.825" style="width:75%" />
+                   <body>
+                   <p id="para2"></p>
+                   <div style="display: flex; justify-content: space-between; width: 75%; margin-top: 1px;">
+                   <label for="mtfaaa" style="text-align: left;">上</label>
+                   <label for="mtfaaa" style="text-align: right;">下</label>
+                   </div>
+                   </body>
+                   </div>
+				</el-collapse-transition>
+                   <br>
+                   <div class="aycollapse" @click="showOption8 = !showOption8" style="cursor:pointer">
+						<i :class="showOption8?'el-icon-caret-bottom':'el-icon-caret-right'"></i>
+						<span>自動飛天</span>
+				</div>
+                   <el-collapse-transition>
+						<div v-show="showOption8">
                    <br>
                    <p>自動飛天.先<el-button onclick="zdss()">搜索</el-button>再使用</p>
                    <br>
@@ -357,7 +396,21 @@
                    <el-button onclick="zdkf()">快飛</el-button>
                    <el-button onclick="zdxj()">快降</el-button>
                    <el-button onclick="zdkkf()">超快飛</el-button>
+                    </div>
+				</el-collapse-transition>
+                    <br>
+                    <div class="aycollapse" @click="showOption9 = !showOption9" style="cursor:pointer">
+						<i :class="showOption9?'el-icon-caret-bottom':'el-icon-caret-right'"></i>
+						<span>克制瞬移</span>
+				</div>
+                   <el-collapse-transition>
+						<div v-show="showOption9">
+                   <br>
+                    <el-button onclick="nkz()">男克瞬</el-button>
+                    <el-button onclick="mkz()">女克瞬</el-button>
 	  		    	</div>            
+				</el-collapse-transition>
+                  </div>
                 <div v-show="tabValue==='three'">
 					<div class="aytext">
 			     	 
@@ -464,6 +517,7 @@
 				</div>
 				    <el-collapse-transition>
 						<div v-show="showOption4">
+                  <p>2025/4/2:優化飛天遁地寫法</p>
 		  <p>2025/4/1:挑戰功能修復與改進</p>
                   <p>2025/3/31:新增速通人機</p>
 		  <p>2025/3/29:優化介面UI</p>
@@ -488,18 +542,26 @@
 			</div>
 		</div>
         <script>
+nftjgsz = {};
+mftjgsz = {};
+  
+nftpd = false;
+mftpd = false;
+          
+nfthspd = false;
+mfthspd = false;
+  
+nftf = 0;
+mftf = 0;
+</script>
+        <script>
 function yjgb() {//一鍵重置
 window.gqpd = 0;
-window.dgpd = 0;
 window.njtgdpd = 0;
 window.mjtgdpd = 0;
 window.blackpd = 0;
-window.nftpd = 0;
-window.nddpd = 0;
-window.mftpd = 0;
-window.mddpd = 0;
 clearInterval(Interval);
-alert("隔牆 定怪 飛天 遁地 蹲瞬 黑地圖 鏡頭高度");
+alert("隔牆 蹲瞬 黑地圖 鏡頭高度");
 }
       
 function zc() {
@@ -585,7 +647,12 @@ h5gg.searchNumber('1010550', 'U32', '0x00000000', '0x200000000');
 h5gg.searchNearby('2.5', 'F32', '0x200');
 h5gg.searchNearby('0.01', 'F32', '0x200');
 h5gg.searchNumber('2.5', 'F32', '0x00000000', '0x200000000');
-h5gg.editAll('1000', 'F32');
+var count = h5gg.getResultsCount();
+var r = h5gg.getResults(count);
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;
+h5gg.setValue(addr1, 1000, "F32");
+}
 alert("透視(死後生效)")
 }
   
@@ -600,23 +667,13 @@ alert("貼牆透(切槍生效)")
 }
       
 function st() {//鎖頭
-if (window.stpd == 1) {window.stpd = 0;
-h5gg.clearResults();
-h5gg.searchNumber('0.5', 'F32', '0x00000000', '0x500000000');
-h5gg.searchNearby('-0.075', 'F32','0x100');
-h5gg.searchNearby('0.01', 'F32','0x100');
-h5gg.searchNumber('0.5', 'F32', '0x00000000', '0x500000000');
-h5gg.editAll('0.1', 'F32');
-alert("關閉鎖頭")
-}else{window.stpd = 1;
 h5gg.clearResults();
 h5gg.searchNumber('0.1', 'F32', '0x00000000', '0x500000000');
 h5gg.searchNearby('-0.075', 'F32','0x100');
 h5gg.searchNearby('0.01', 'F32','0x100');
 h5gg.searchNumber('0.1', 'F32', '0x00000000', '0x500000000');
-h5gg.editAll('0.5', 'F32');
+h5gg.editAll('0.4', 'F32');
 alert("開啟鎖頭")
-}
 }
       
 function gq() {//隔牆
@@ -642,33 +699,35 @@ alert("隔牆(切槍生效)");
 function allss(){
 h5gg.clearResults();//全槍射速
 h5gg.searchNumber('10000000', 'U32', '0x00000000', '0x200000000');
-h5gg.editAll('7000000', 'U32');
-alert("全槍射速")
+var count = h5gg.getResultsCount();
+var r = h5gg.getResults(count);
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;
+h5gg.setValue(addr1, 7500000, "U32");
 }
-      
-function allwh(){
-h5gg.clearResults();//全槍無後 無效
-h5gg.searchNumber('3912059920', 'U32', '0x00000000', '0x200000000');
-h5gg.searchNearby('3800936456', 'U32','0x100');
-h5gg.searchNumber('3800936456', 'U32', '0x00000000', '0x200000000');
-h5gg.editAll('3778019102', 'U32');
-h5gg.clearResults();
-h5gg.searchNumber('3912059920', 'U32', '0x00000000', '0x200000000');
-h5gg.searchNearby('3778019102', 'U32','0x100');
-h5gg.searchNumber('3912059920', 'U32', '0x00000000', '0x200000000');
-h5gg.editAll('-5.9', 'F32');
+alert("全槍射速")
 }
       
 function fk(){
 h5gg.clearResults();//浮空
 h5gg.searchNumber('4692750812785410048', 'U64', '0x100000000', '0x160000000');
-h5gg.editAll('-477218586901872640', 'U64');
+var count = h5gg.getResultsCount();
+var r = h5gg.getResults(count);
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;
+h5gg.setValue(addr1, -477218586901872640, "U64");
+}
 }
   
 function cq(){
 h5gg.clearResults();//穿牆
 h5gg.searchNumber('1034147594', 'U64', '0x00000000', '0x200000000');
-h5gg.editAll('2144061856', 'U64');
+var count = h5gg.getResultsCount();
+var r = h5gg.getResults(count);
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;
+h5gg.setValue(addr1, 2144061856, "U64");
+}
 }
   
 function js(){//加速
@@ -676,99 +735,31 @@ h5gg.clearResults();
 h5gg.searchNumber('4602678820244291584', 'U64', '0x00000000', '0x200000000');
 h5gg.searchNearby('7', 'F32','0x100');
 h5gg.searchNumber('7', 'F32', '0x00000000', '0x200000000');
-h5gg.editAll('7.8','F32');
+var count = h5gg.getResultsCount();
+var r = h5gg.getResults(count);
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;
+h5gg.setValue(addr1, 7.8, "F32");
+}
 } 
       
-function dg() {//俱樂部定怪
-if (window.dgpd == 1) {window.dgpd = 0;
-h5gg.clearResults();
-h5gg.searchNumber('0.2', 'F32', '0x100000000', '0x160000000');
-h5gg.searchNearby('2', 'F32','0x100');
-h5gg.searchNearby('8555', 'F32', '0x100');
-h5gg.searchNearby('1', 'F32', '0x100');
-h5gg.searchNumber('8555', 'F32', '0x100000000', '0x160000000');
-h5gg.editAll('0.1', 'F32');
-alert("怪物變傻關閉")
-}else{window.dgpd = 1;
+function dg() {//怪物變傻
 h5gg.clearResults();
 h5gg.searchNumber('0.2', 'F32', '0x100000000', '0x160000000');
 h5gg.searchNearby('2', 'F32','0x100');
 h5gg.searchNearby('0.1', 'F32', '0x100');
 h5gg.searchNearby('1', 'F32', '0x100');
 h5gg.searchNumber('0.1', 'F32', '0x100000000', '0x160000000');
-h5gg.editAll('8555', 'F32');
+var count = h5gg.getResultsCount();
+var r = h5gg.getResults(count);
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;
+h5gg.setValue(addr1, 8555, "F32");
+}
 alert("怪物變傻開啟")
 }
-}
       
-function dgjj() {//俱樂部機甲
-//h5gg.clearResults();
-//h5gg.searchNumber('5208~5209', 'I32', '0x00000000', '0x200000000');
-//h5gg.searchNumber('5208~5209', 'I32', '0x00000000', '0x200000000');
-//h5gg.editAll('5002','I32');//20%
-h5gg.clearResults();
-h5gg.searchNumber('3001~3033', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('180', 'I32','0x100');
-h5gg.searchNumber('3001~3033', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('5002','I32');//40%
-h5gg.clearResults();
-h5gg.searchNumber('3035', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('112001','I32');//60%
-h5gg.clearResults();
-h5gg.searchNumber('3034', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('112001','I32');//80%
-h5gg.clearResults();
-h5gg.searchNumber('5206', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('120', 'I32','0x100');
-h5gg.searchNearby('2', 'I32','0x100');
-h5gg.searchNumber('2', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('2139000000','I32');//90%
-h5gg.clearResults();
-h5gg.searchNumber('5201~5206', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('120', 'I32','0x100');
-h5gg.searchNumber('5201~5206', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('5002','I32');//100%
-alert("俱樂部機甲開啟成功");
-}
-          
-function hard(){//挑戰子追
-h5gg.clearResults();
-h5gg.searchNumber('3010', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('360', 'I32','0x100');
-h5gg.searchNearby('1058088681', 'I32','0x100');
-h5gg.searchNumber('1058088681', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('2139000000','I32');//20%
-h5gg.clearResults();
-h5gg.searchNumber('3011', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('160', 'I32','0x100');
-h5gg.searchNearby('3', 'I32','0x100');
-h5gg.searchNumber('3', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('2139000000','I32');//30%
-h5gg.clearResults();
-h5gg.searchNumber('3014', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('120', 'I32','0x100');
-h5gg.searchNearby('1065353216', 'I32','0x100');
-h5gg.searchNumber('1065353216', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('2139000000','I32');//40%
-h5gg.clearResults();
-h5gg.searchNumber('3010~3011', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('360', 'I32','0x100');
-h5gg.searchNumber('3010~3011', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('5101','I32');//50%
-h5gg.clearResults();
-h5gg.searchNumber('3001~3033', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('120', 'I32','0x100');
-h5gg.searchNumber('3001~3033', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('5002','I32');//60%
-h5gg.clearResults();
-h5gg.searchNumber('3022', 'I32', '0x00000000', '0x200000000');
-h5gg.searchNearby('180', 'I32','0x100');
-h5gg.searchNumber('3022', 'I32', '0x00000000', '0x200000000');
-h5gg.editAll('5002','I32');//70%
-alert("挑戰子追開啟成功")
-} 
-      
-function hell(){//地獄子追
+function hell(){//挑戰子追
 h5gg.clearResults();
 h5gg.searchNumber('3001~3024', 'I32', '0x00000000', '0x200000000');
 h5gg.searchNearby('120', 'I32','0x100');
@@ -887,7 +878,7 @@ h5gg.editAll('3', 'F32')
 alert("女鏡頭高度(按蹲生效)")
 }
 }
-      
+          
 function nds() {//男蹲瞬
 if (window.ndspd == 1) {window.ndspd = 0;
 clearInterval(Interval);
@@ -928,89 +919,104 @@ h5gg.searchNearby('0.8', 'F32','0x100');
 h5gg.searchNearby('10', 'F32','0x100');
 h5gg.searchNearby('1', 'F32','0x100');
 h5gg.searchNumber('1', 'F32', '0x00000000', '0x200000000');
-h5gg.editAll('1.5','F32');
+var count = h5gg.getResultsCount();
+var r = h5gg.getResults(count);
+for(var i=0; i<count; i++) {
+var addr1 = r[i].address;
+h5gg.setValue(addr1, 1.5, "F32");
+}
 } 
-      
-function nft() {//男飛天
-if (window.nftpd == 1) {window.nftpd = 0;
-h5gg.clearResults();
-h5gg.searchNumber('-10', 'F32', '0x100000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('-10', 'F32', '0x100000000', '0x500000000');
-h5gg.editAll('0.85', 'F32');
-}else{window.nftpd = 1;
+          
+function nfths(){//男上下開關
+ if(nftpd){					
+   if(nfthspd){
+   for(i = 0;i<nftf;i++){
+   h5gg.setValue(nftjgsz[i],'0.85', 'F32');
+   document.getElementById("check1").checked = false;
+   nfthspd = false;
+   }
+  }else{
+   for(i = 0;i<nftf;i++){
+   h5gg.setValue(nftjgsz[i],nftaaa.value, 'F32');
+   document.getElementById("check1").checked = true;
+   nfthspd = true;
+   }
+  }
+  }else{
+  alert('你還沒有點擊搜索 男角')
+  document.getElementById("check1").checked = false;
+  }
+}
+          
+function nftyy(){
+nftaaa.value=0.85;
+}
+          
+function mftyy(){
+mftaaa.value=0.825;
+}
+          
+function nftyss(){//男上下預搜索
 h5gg.clearResults();
 h5gg.searchNumber('0.85', 'F32', '0x100000000', '0x500000000');
 h5gg.searchNearby('90', 'F32','0x100');
 h5gg.searchNumber('0.85', 'F32', '0x100000000', '0x500000000');
-h5gg.editAll('-10', 'F32');
+  if(h5gg.getResultsCount() == 0){
+  alert('男角 未搜索到任何結果');
+  }                
+  else{
+  var nftyssjgsl = h5gg.getResultsCount();
+  var nftyssjg = h5gg.getResults(nftyssjgsl);
+  for(i = 0;i<nftyssjgsl;i++){
+  nftpd = true;
+  nftjgsz[nftf] = nftyssjg[i].address;
+  nftf++;
+  }
+  }
+    h5gg.clearResults();
+    alert('男角 搜索完成');
 }
+          
+function mfths(){//女上下開關
+ if(mftpd){					
+   if(mfthspd){
+   for(i = 0;i<mftf;i++){
+   h5gg.setValue(mftjgsz[i],'0.825', 'F32');
+   document.getElementById("check2").checked = false;
+   mfthspd = false;
+   }
+  }else{
+   for(i = 0;i<mftf;i++){
+   h5gg.setValue(mftjgsz[i],mftaaa.value, 'F32');
+   document.getElementById("check2").checked = true;
+   mfthspd = true;
+   }
+  }
+  }else{
+  alert('你還沒有點擊搜索 女角')
+  document.getElementById("check2").checked = false;
+  }
 }
-
-function ndd() {//男遁地
-if (window.nddpd == 1) {window.nddpd = 0;
+          
+function mftyss(){//女上下預搜索
 h5gg.clearResults();
-h5gg.searchNumber('10', 'F32', '0x100000000', '0x500000000');
+h5gg.searchNumber('0.825', 'F32', '0x100000000', '0x500000000');
 h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('10', 'F32', '0x100000000', '0x500000000');
-h5gg.editAll('0.85', 'F32');
-}else{window.nddpd = 1;
-h5gg.clearResults();
-h5gg.searchNumber('0.85', 'F32', '0x100000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('0.85', 'F32', '0x100000000', '0x500000000');
-h5gg.editAll('10', 'F32');
-}
-}
-  
-function nzd(){//男自訂
-h5gg.clearResults();
-var hk1 = prompt("負數往上,正數往下");
-h5gg.searchNumber('0.85', 'F32', '0x100000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('0.85', 'F32', '0x100000000', '0x500000000');
-h5gg.editAll(hk1, 'F32');
-}
-      
-function mft() {//女飛天
-if (window.mftpd == 1) {window.mftpd = 0;
-h5gg.clearResults();
-h5gg.searchNumber('-10', 'F32', '0x00000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('-10', 'F32', '0x00000000', '0x500000000');
-h5gg.editAll('0.825', 'F32');
-}else{window.mftpd = 1;
-h5gg.clearResults();
-h5gg.searchNumber('0.825', 'F32', '0x00000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('0.825', 'F32', '0x00000000', '0x500000000');
-h5gg.editAll('-10', 'F32');
-}
-}
-  
-function mdd() {//女遁地
-if (window.mddpd == 1) {window.mddpd = 0;
-h5gg.clearResults();
-h5gg.searchNumber('10', 'F32', '0x00000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('10', 'F32', '0x00000000', '0x500000000');
-h5gg.editAll('0.825', 'F32');
-}else{window.mddpd = 1;
-h5gg.clearResults();
-h5gg.searchNumber('0.825', 'F32', '0x00000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('0.825', 'F32', '0x00000000', '0x500000000');
-h5gg.editAll('10', 'F32');
-}
-}
-  
-function mzd(){//女自訂
-h5gg.clearResults();
-var hk1 = prompt("負數往上,正數往下");
-h5gg.searchNumber('0.825', 'F32', '0x00000000', '0x500000000');
-h5gg.searchNearby('90', 'F32','0x100');
-h5gg.searchNumber('0.825', 'F32', '0x00000000', '0x500000000');
-h5gg.editAll(hk1, 'F32');
+h5gg.searchNumber('0.825', 'F32', '0x100000000', '0x500000000');
+  if(h5gg.getResultsCount() == 0){
+  alert('女角 未搜索到任何結果');
+  }                
+  else{
+  var mftyssjgsl = h5gg.getResultsCount();
+  var mftyssjg = h5gg.getResults(mftyssjgsl);
+  for(i = 0;i<mftyssjgsl;i++){
+  mftpd = true;
+  mftjgsz[mftf] = mftyssjg[i].address;
+  mftf++;
+  }
+  }
+    h5gg.clearResults();
+    alert('女角 搜索完成');
 }
   
 function black() {//黑地圖
@@ -1028,9 +1034,7 @@ h5gg.editAll('1232348144', 'I32');
 }
   
 function zdss(){//自動飛搜索
-h5gg.clearResults();//穿牆
-h5gg.searchNumber('1034147594', 'U64', '0x00000000', '0x200000000');
-h5gg.editAll('2144061856', 'U64');
+cq();
 h5gg.clearResults();//搜索自動飛
 h5gg.searchNumber('10', 'F32', '0x00000000', '0x200000000');
 h5gg.searchNearby('0.7', 'F32','0x400');
@@ -1660,6 +1664,9 @@ alert("開關懸浮")
 						showOption4: false,
 						showOption5: false,
                         showOption6: false,
+                        showOption7: false,
+                        showOption8: false,
+                        showOption9: false,
 						tabValue: "one",
 
 

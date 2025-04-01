@@ -424,16 +424,11 @@
 					<div class="aytext">
                      
 					</div>				
-                   <p>請遵守括號內說明,否則無效</p>
+                   <p>請遵守括號內說明</p>
 	           <p>可聯絡作者購買房間爭霸功能❗</p>
                    <br>
-                   <el-button onclick="dg()">俱樂部定怪(局內開)</el-button>
-                    
-                   <br>
-                   <br>
-                   
-                   <el-button onclick="hard()">挑戰子追(人機開)</el-button>
-                   <el-button onclick="hell()">地獄子追(人機開)</el-button>
+                   <el-button onclick="dg()">怪物變傻(大廳開)</el-button>
+                   <el-button onclick="hell()">挑戰子追(人機開)</el-button>
                    <br>
                    <br>
                    <el-button onclick="dszz()">降龍子追(人機開)</el-button>
@@ -458,6 +453,7 @@
           <p>3.蹲瞬務必在該局結束前關閉</p>
 		  <p>4.基本功能中"射速"避免與槍械區功能使用</p>
           <p>5.子追一次只能開一種</p>
+		  <p>6.怪物變傻只有單人有效</p>
                       </div>
 					</el-collapse-transition>
 
@@ -468,6 +464,7 @@
 				</div>
 				    <el-collapse-transition>
 						<div v-show="showOption4">
+		  <p>2025/4/1:挑戰功能修復與改進</p>
                   <p>2025/3/31:新增速通人機</p>
 		  <p>2025/3/29:優化介面UI</p>
                   <p>2025/3/14:優化槍械介面</p>
@@ -691,7 +688,7 @@ h5gg.searchNearby('8555', 'F32', '0x100');
 h5gg.searchNearby('1', 'F32', '0x100');
 h5gg.searchNumber('8555', 'F32', '0x100000000', '0x160000000');
 h5gg.editAll('0.1', 'F32');
-alert("俱樂部定怪關閉")
+alert("怪物變傻關閉")
 }else{window.dgpd = 1;
 h5gg.clearResults();
 h5gg.searchNumber('0.2', 'F32', '0x100000000', '0x160000000');
@@ -700,7 +697,7 @@ h5gg.searchNearby('0.1', 'F32', '0x100');
 h5gg.searchNearby('1', 'F32', '0x100');
 h5gg.searchNumber('0.1', 'F32', '0x100000000', '0x160000000');
 h5gg.editAll('8555', 'F32');
-alert("俱樂部定怪開啟")
+alert("怪物變傻開啟")
 }
 }
       
@@ -792,7 +789,7 @@ h5gg.searchNumber('3022', 'I32', '0x00000000', '0x200000000');
 h5gg.searchNearby('180', 'I32','0x100');
 h5gg.searchNumber('3022', 'I32', '0x00000000', '0x200000000');
 h5gg.editAll('5002','I32');
-alert("地獄子追開啟成功")
+alert("挑戰子追開啟成功")
 } 
       
 function tc(){//爭霸子追

@@ -644,12 +644,7 @@ h5gg.searchNumber('1010550', 'U32', '0x00000000', '0x200000000');
 h5gg.searchNearby('2.5', 'F32', '0x200');
 h5gg.searchNearby('0.01', 'F32', '0x200');
 h5gg.searchNumber('2.5', 'F32', '0x00000000', '0x200000000');
-var count = h5gg.getResultsCount();
-var r = h5gg.getResults(count);
-for(var i=0; i<count; i++) {
-var addr1 = r[i].address;
-h5gg.setValue(addr1, 1000, "F32");
-}
+h5gg.editAll('1000', 'F32');
 alert("透視(死後生效)")
 }
   
